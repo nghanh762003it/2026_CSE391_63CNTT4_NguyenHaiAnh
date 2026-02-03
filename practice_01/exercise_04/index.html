@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Exercise 04</title>
+  </head>
+
+  <body>
+    <form
+      onsubmit="
+        handleSubmit();
+        return false;
+      "
+    >
+      <label>
+        Name:
+        <input type="text" id="studentName" />
+      </label>
+
+      <label>
+        Age:
+        <input type="number" id="studentAge" />
+      </label>
+
+      <button type="submit">Add</button>
+    </form>
+
+    <table border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Age</th>
+        </tr>
+      </thead>
+
+      <tbody id="tableBody"></tbody>
+    </table>
+
+    <script>
+      let counter = 1;
+      let names = [];
+      
+      const nameInput = document.getElementById("studentName");
+      const ageInput = document.getElementById("studentAge");
+      const tableBody = document.getElementById("tableBody");
+      function handleSubmit() {
+        const name = nameInput.value;
+        const age = ageInput.value;
+        // validate input
+        if (name.trim() === "") {
+          alert("Please enter a name.");
+          return;
+        }
+        if (!age || age <= 0) {
+          alert("Please enter a valid age.");
+          return;
+        }
+        // check for duplicates
+        if (names.includes(name)) {
+          alert("This name has already been added.");
+          return;
+        }
+        // add name to list
+        names.push(name);
+        // create a new row
+        const row = document.createElement("tr");
+        // create cells
+        const idCell = document.createElement("td");
+        const ageCell = document.createElement("td");
+        // set cell contents
+        idCell.textContent = counter;
+        ageCell.textContent = age;
+        const nameCell = document.createElement("td");
+        nameCell.textContent = name;
+        // append cells to row
+        row.appendChild(idCell);
+        row.appendChild(nameCell);
+        row.appendChild(ageCell);
+        // append row to table body
+        tableBody.appendChild(row);
+
+        counter++;
+        // clear input field
+        nameInput.value = "";
+        ageInput.value = "";
+      }
+    </script>
+  </body>
+</html>
