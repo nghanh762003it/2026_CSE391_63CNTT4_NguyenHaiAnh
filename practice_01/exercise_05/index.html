@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Exercise 05</title>
+</head>
+
+<body>
+  <form onsubmit="handleSubmit(); return false;">
+    <label>
+      Name:
+      <input type="text" id="studentName" />
+    </label>
+
+    <label>
+      Age:
+      <input type="number" id="studentAge" />
+    </label>
+
+    <button type="submit">Add</button>
+  </form>
+
+  <br>
+
+  <table border="1">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody">
+    </tbody>
+  </table>
+
+  <script>
+    let students = [];
+    let counter = 1;
+
+    const nameInput = document.getElementById("studentName");
+    const ageInput = document.getElementById("studentAge");
+    const tableBody = document.getElementById("tableBody");
+
+    function handleSubmit() {
+      const name = nameInput.value.trim();
+      const age = Number(ageInput.value);
+
+      // Validate name
+      if (!name) {
+        alert("Please enter a name.");
+        return;
+      }
+
+      // Validate age
+      if (!age || age <= 0) {
+        alert("Please enter a valid age.");
+        return;
+      }
+
+      // Create student object
+      const student = {
+        id: counter++,
+        name: name,
+        age: age
+      };
+
+      // Add to array
+      students.push(student);
+
+      // Re-render table
+      renderTable();
+
+      // Clear inputs
+      nameInput.value = "";
+      ageInput.value = "";
+
+      // Focus back to name
+      nameInput.focus();
+    }
+
+    function renderTable() {
+      tableBody.innerHTML = "";
+
+      if (students.length === 0) {
+        const emptyRow = document.createElement("tr");
+        const emptyCell = document.createElement("td");
+        emptyCell.colSpan = 4;
+        emptyCell.textContent = "No students available.";
+        emptyRow.appendChild(emptyCell);
+        tableBody.appendChild(emptyRow);
+        return;
+      }
+
+      students.forEach(student => {
+        const row = document.createElement("tr");
+
+        const idCell = document.createElement("td");
+        const nameCell = document.createElement("td");
+        const ageCell = document.createElement("td");
+        const actionCell = document.createElement("td");
+
+        idCell.textContent = student.id;
+        nameCell.textContent = student.name;
+        ageCell.textContent = student.age;
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "Delete";
+
+        deleteBtn.addEventListener("click", function() {
+          deleteStudent(student.id);
+        });
+
+        actionCell.appendChild(deleteBtn);
+
+        row.appendChild(idCell);
+        row.appendChild(nameCell);
+        row.appendChild(ageCell);
+        row.appendChild(actionCell);
+
+        tableBody.appendChild(row);
+      });
+    }
+
+    function deleteStudent(id) {
+      const confirmed = confirm("Are you sure you want to delete this student?");
+      if (!confirmed) return;
+
+      students = students.filter(student => student.id !== id);
+      renderTable();
+    }
+
+
+    renderTable();
+  </script>
+</body>
+</html>
