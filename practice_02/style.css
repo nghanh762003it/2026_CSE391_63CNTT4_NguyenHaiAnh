@@ -81,3 +81,66 @@ a:hover {
 .btn:hover {
     background: #0056b3;
 }
+
+/* Cải tiến nav bằng Flexbox */
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background: #f8f9fa;
+    padding: 15px;
+}
+
+/* Cải tiến .posts bằng Flexbox */
+.posts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+/* Cải tiến .card */
+.card {
+    flex: 1 1 300px;
+}
+
+/* Responsive: màn hình < 768px, card xuống 1 cột */
+@media (max-width: 768px) {
+    .posts {
+        flex-direction: column;
+    }
+    
+    .card {
+        flex: 1 1 100%;
+    }
+}
+
+/* Bài 3B: CSS Grid Gallery */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+/* Responsive: tự động giảm cột khi màn hình nhỏ */
+@media (max-width: 768px) {
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+.item {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    font-size: 2rem;
+    border-radius: 8px;
+}
