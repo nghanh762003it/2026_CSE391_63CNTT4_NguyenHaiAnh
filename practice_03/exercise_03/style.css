@@ -1,0 +1,97 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px;
+}
+
+.container {
+    max-width: 800px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-top: 3px solid #5bc0de;
+    border-bottom: 3px solid #5bc0de;
+    padding: 40px;
+    background: white;
+}
+
+h1 {
+    font-size: 22px;
+    font-weight: normal;
+    text-align: center;
+    margin-bottom: 40px;
+    line-height: 1.5;
+    color: #333;
+}
+
+.content {
+    display: flex;
+    gap: 30px;
+}
+
+/* Cột trái */
+.left-card {
+    flex: 0 0 280px;
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 3px;
+}
+
+.left-card h3 {
+    font-size: 14px;
+    font-weight: normal;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    color: #333;
+}
+
+.left-card p {
+    font-size: 12px;
+    color: #888;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.author {
+    margin-top: auto;
+}
+
+.author-name {
+    font-size: 13px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.author-role {
+    font-size: 12px;
+    color: #5bc0de;
+}
+
+/* Cột phải */
+.right-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.right-content p {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.7;
+}
+
+.bold-text {
+    font-weight: bold;
+    color: #333 !important;
+}
