@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Đặt Hàng</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>🛒 Form Đặt Hàng</h2>
+
+        <!-- Form đặt hàng -->
+        <form id="orderForm">
+
+            <!-- Tên sản phẩm -->
+            <div class="form-group">
+                <label>Tên sản phẩm <span class="required">*</span></label>
+                <select id="product">
+                    <option value="">-- Chọn sản phẩm --</option>
+                    <option value="Áo">Áo - 150,000đ</option>
+                    <option value="Quần">Quần - 200,000đ</option>
+                    <option value="Giày">Giày - 350,000đ</option>
+                    <option value="Túi">Túi - 250,000đ</option>
+                </select>
+                <span class="error" id="productError"></span>
+            </div>
+
+            <!-- Số lượng -->
+            <div class="form-group">
+                <label>Số lượng <span class="required">*</span></label>
+                <input type="number" id="quantity" placeholder="Nhập số lượng (1-99)" min="1" max="99">
+                <span class="error" id="quantityError"></span>
+            </div>
+
+            <!-- Tổng tiền -->
+            <div class="form-group total-group">
+                <label>Tổng tiền:</label>
+                <span id="totalPrice" class="total-price">0đ</span>
+            </div>
+
+            <!-- Ngày giao hàng -->
+            <div class="form-group">
+                <label>Ngày giao hàng <span class="required">*</span></label>
+                <input type="date" id="deliveryDate">
+                <span class="error" id="deliveryDateError"></span>
+            </div>
+
+            <!-- Địa chỉ giao -->
+            <div class="form-group">
+                <label>Địa chỉ giao hàng <span class="required">*</span></label>
+                <input type="text" id="address" placeholder="Nhập địa chỉ giao hàng">
+                <span class="error" id="addressError"></span>
+            </div>
+
+            <!-- Ghi chú -->
+            <div class="form-group">
+                <label>Ghi chú</label>
+                <textarea id="note" placeholder="Nhập ghi chú (không bắt buộc)"></textarea>
+                <div class="char-count">
+                    <span id="noteCount">0</span>/200
+                </div>
+                <span class="error" id="noteError"></span>
+            </div>
+
+            <!-- Phương thức thanh toán -->
+            <div class="form-group">
+                <label>Phương thức thanh toán <span class="required">*</span></label>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="payment" value="COD"> COD
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="payment" value="Chuyển khoản"> Chuyển khoản
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="payment" value="Ví điện tử"> Ví điện tử
+                    </label>
+                </div>
+                <span class="error" id="paymentError"></span>
+            </div>
+
+            <button type="submit">Đặt Hàng</button>
+        </form>
+
+        <!-- Xác nhận đơn hàng (ẩn ban đầu) -->
+        <div class="confirm-box" id="confirmBox">
+            <h3>📋 Xác nhận đơn hàng</h3>
+            <div class="confirm-details" id="confirmDetails"></div>
+            <div class="confirm-buttons">
+                <button id="btnConfirm" class="btn-confirm">Xác nhận</button>
+                <button id="btnCancel" class="btn-cancel">Hủy</button>
+            </div>
+        </div>
+
+        <!-- Thông báo thành công (ẩn ban đầu) -->
+        <div class="success-message" id="successMessage">
+            <h3>🎉 Đặt hàng thành công!</h3>
+            <p>Cảm ơn bạn đã đặt hàng. Chúng tôi sẽ liên hệ sớm nhất!</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
